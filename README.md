@@ -22,6 +22,7 @@ Quelles stations risquent la rupture de service (trop peu de vélos), et à quel
 
 ## Observations
 - Les transformations ne lancent rien : c'est `show()` / `count()` qui déclenchent les Jobs.
+- Partitions : 4 → `repartition(1)` → 1, le shuffle se voit dans la Spark UI (4 Tasks qui écrivent, 1 qui lit).
 - Le `groupBy` fait un shuffle → `Exchange` visible dans le plan d'exécution.
 - La Lazy Evaluation permet à Spark d'optimiser le plan global avant de calculer.
 
